@@ -5,6 +5,8 @@ import newLogo from './../../assets/new_logo.png';
 import logoutLogo from './../../assets/shut_down.png';
 import './Nav.css';
 import {Link, withRouter} from 'react-router-dom'
+import connect from 'react-redux'
+import updateUser, logout from './reducer'
 
 class Nav extends Component {
   constructor(props) {
@@ -27,6 +29,8 @@ class Nav extends Component {
     axios.post('/api/auth/logout')
       .then(_ => 'replace this string with something else')
   }
+
+  const {Link, withRouter} = react-router-dom
   
   render() {
       return this.props.location.pathname !== '/' &&
@@ -44,10 +48,15 @@ class Nav extends Component {
             </Link>
           </div>
           <Link to = '/'>
-            <img className='nav-img logout' src={logoutLogo} alt='logout' onClick = {Link} />
+            <img className='nav-img logout' src={logoutLogo} alt='logout' onClick = {() => logout} />
           </Link>
         </div>
   }
+}
+
+
+mapStateToProps () => {
+  
 }
 
 export default withRouter(Nav);
